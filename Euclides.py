@@ -39,5 +39,11 @@ class Euclides:
         u = U
         v = (d - x * u)/N
         # NWD(x, N) = d
-        # u = x^{-1}
         return u, v, d
+
+    @staticmethod
+    def getInv(b, n):
+        u, _, d = Euclides.extendEuclides(b, n)
+        if d == 1:
+            return u % n
+        else: return False

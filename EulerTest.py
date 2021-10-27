@@ -1,3 +1,4 @@
+from Euclides import Euclides
 from PowBin import PowBin
 
 
@@ -12,5 +13,5 @@ class EulerTest:
 
     @staticmethod
     def squareMod(a, p):
-        #print("b = ", end="")
-        return PowBin.powBinMod(a, int((p + 1)/4), p)
+        result = PowBin.powBinMod(a, int((p + 1)/4), p)
+        return result, Euclides.getInv(result, p)
