@@ -5,7 +5,7 @@ import copy
 class Euclides:
 
     @staticmethod
-    def euclidesNWD(self, aInp, bInp):
+    def euclidesNWD(aInp, bInp):
         if(aInp >= bInp):
             a = aInp
             b = bInp
@@ -19,7 +19,6 @@ class Euclides:
             b = t
             if 0 == b : break
         print(str(a))
-           # if 0 == b: break
 
     @staticmethod
     def extendEuclides(x, N):
@@ -35,9 +34,10 @@ class Euclides:
             U_new = copy.deepcopy(V)
             V = U - V * q
             U = U_new
-
             if B == 0: break
         d = A
         u = U
         v = (d - x * u)/N
+        # NWD(x, N) = d
+        # u = x^{-1}
         return u, v, d
