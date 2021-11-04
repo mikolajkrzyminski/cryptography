@@ -12,13 +12,14 @@ class Euclides:
         else:
             a = bInp
             b = aInp
-        print(str(a) + " = ", end="")
+        #print(str(a) + " = ", end="")
         while True:
             t = (a - (a // b) * b)
             a = b
             b = t
             if 0 == b : break
-        print(str(a))
+        return a
+        #print(str(a))
 
     @staticmethod
     def extendEuclides(x, N):

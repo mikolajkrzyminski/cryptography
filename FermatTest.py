@@ -12,7 +12,7 @@ class FermatTest:
         for i in range(k):
             while True:
                 # generate random n-1 size number
-                a = FermatTest.getRandomNBitsNumber(bitLengthRand)
+                a = FermatTest.getRandomNBitsNumber(bitLengthRand - 1)
                 # checks if it wasn't generate
                 if a not in testedRandomValues:
                     # checks co-prime
@@ -28,7 +28,7 @@ class FermatTest:
     @staticmethod
     def getRandomNBitsNumber(n):
         res = 1
-        for i in range(n - 1):
+        for i in range(n):
             bit = random.randint(0, 1)
             res = res << 1
             # if 1 generated
