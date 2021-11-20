@@ -5,7 +5,7 @@ from PowBin import PowBin
 
 class RSA:
     @staticmethod
-    def rsa():
+    def generateKeyPair():
         p, q = 0, 0
         while True:
             p = FermatTest.getRandomNBitsNumber(256)
@@ -34,8 +34,7 @@ class RSA:
         pu.close()
         n = int(public[0])
         e = int(public[1])
-        #M = FermatTest.getRandomNBitsNumber(n.bit_length() - 1)
-        M = 12345
+        M = FermatTest.getRandomNBitsNumber(n.bit_length() - 2)
         print(M)
         C = PowBin.powBinMod(M, e, n)
         return C
