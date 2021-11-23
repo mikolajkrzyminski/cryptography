@@ -24,7 +24,7 @@ class EllipticCurve:
             fx = (PowBin.powBinMod(x, 3, self.p) + self.A * x + self.B) % self.p
             if -1 != fx / self.p and EulerTest.eulerTest(fx, self.p):
                 y = EulerTest.squareMod(fx, self.p)[0]
-                if self.checkPoint(EllipticPoint(x, y)): break
+                if self.checkPoint(EllipticPoint(x, y, self)): break
         return x, y
 
     def checkPoint(self, ePoint):
@@ -82,7 +82,7 @@ class EllipticPoint:
         if self.x == "inf" and self.y == "inf": resultX, resultY = other.x, other.y
         elif other.x == "inf" and other.y == "inf": resultX, resultY = self.x, self.y
         elif self.x != other.x:
-            l = ((other.y - self.y) * Euclides.getInv(other.x - self.x, self.eCurve.p)) % self.eCurve.p
+            l = ((other.y - self.y) * Euclides.getInv((other.x - self.x) % self.eCurve.p, self.eCurve.p)) % self.eCurve.p
             resultX = (PowBin.powBinMod(l, 2, self.eCurve.p) - self.x - other.x) % self.eCurve.p
             resultY = (l * (self.x - resultX) - self.y) % self.eCurve.p
         elif self == other:
@@ -109,4 +109,3 @@ class EllipticPoint:
             Q = Q + Q
             n = n / 2
         return R
-
