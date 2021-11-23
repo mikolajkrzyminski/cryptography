@@ -1,6 +1,5 @@
 import copy
 import random
-import sys
 
 from Euclides import Euclides
 from EulerTest import EulerTest
@@ -22,8 +21,12 @@ class EllipticCurve:
         while True:
             x = random.randint(0, self.p - 1)
             fx = (PowBin.powBinMod(x, 3, self.p) + self.A * x + self.B) % self.p
-            if -1 != fx / self.p and EulerTest.eulerTest(fx, self.p):
-                y = EulerTest.squareMod(fx, self.p)[0]
+            legendreResult = EulerTest.legendre(fx, self.p)
+            if 1 == legendreResult or 0 == legendreResult:
+                i = random.randint(0, 1)
+                y = EulerTest.squareModField(fx, self.p)
+                if 0 == i:
+                    y = -y % self.p
                 if self.checkPoint(EllipticPoint(x, y, self)): break
         return x, y
 

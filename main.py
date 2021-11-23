@@ -10,7 +10,7 @@ from CryptoAlg.EllipticCurve import EllipticCurve, EllipticPoint
 
 if __name__ == '__main__':
     # print(EllipticalCurves.getEllipticalCurve(1000))
-    A, B, p = 12, 19, 97
+    A, B, p = 0, 1, 7
     eCurve = EllipticCurve(A, B, p)
 
     P = EllipticPoint(19, 5, eCurve)
@@ -21,5 +21,9 @@ if __name__ == '__main__':
     #print(R + O)
     #print(P + Q)
     #print(P + P)
-    for i in range(100):
-        print(P.nMultiple(i + 1))
+    pointSet = set()
+    for i in range(1000):
+        pointSet.add(eCurve.getRandomEllipticPoint())
+    print(pointSet)
+    # for i in range(100):
+    #     print(P.nMultiple(i + 1))
