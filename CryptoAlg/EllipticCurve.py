@@ -89,7 +89,9 @@ class EllipticPoint:
             resultX = (PowBin.powBinMod(l, 2, self.eCurve.p) - self.x - other.x) % self.eCurve.p
             resultY = (l * (self.x - resultX) - self.y) % self.eCurve.p
         elif self == other:
-            l = ((3 * PowBin.powBinMod(self.x, 2, self.eCurve.p) + self.eCurve.A) * Euclides.getInv(2 * self.y, self.eCurve.p)) % self.eCurve.p
+            l1 = (3 * PowBin.powBinMod(self.x, 2, self.eCurve.p) + self.eCurve.A) % self.eCurve.p
+            l2 = Euclides.getInv(2 * self.y, self.eCurve.p)
+            l = l1 * l2 % self.eCurve.p
             resultX = (PowBin.powBinMod(l, 2, self.eCurve.p) - 2 * self.x) % self.eCurve.p
             resultY = (l * (self.x - resultX) - self.y) % self.eCurve.p
         elif self == other.invPoint(): resultX, resultY = "inf", "inf"
